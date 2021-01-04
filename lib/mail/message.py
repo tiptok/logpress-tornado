@@ -8,10 +8,11 @@ import time
 import os
 import socket
 import random
-from email.MIMEText import MIMEText
-from email.Header import Header
-from email import Charset, Encoders
-from email.Utils import formatdate, getaddresses, formataddr, parseaddr
+from email.mime.text import MIMEText
+from email.header import Header
+# from email.charset import Charset, Encoders
+# from email.encoders import Encoders
+from email.utils import formatdate, getaddresses, formataddr, parseaddr
 from .encoding import smart_str, force_unicode
 from tornado import gen
 
@@ -51,7 +52,7 @@ def forbid_multi_line_headers(name, val, encoding):
 
 
 def sanitize_address(addr, encoding):
-    if isinstance(addr, basestring):
+    if isinstance(addr, str):
         addr = parseaddr(force_unicode(addr))
     nm, addr = addr
     nm = str(Header(nm, encoding))
@@ -85,12 +86,12 @@ class EmailMessage(object):
 		connection=None):
 
 		if to:
-			assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+			assert not isinstance(to, str), '"to" argument must be a list or tuple'
 			self.to = list(to)
 		else:
 			self.to = []
 		if cc:
-			assert not isinstance(cc, basestring), '"cc" argument must be a list or tuple'
+			assert not isinstance(cc, str), '"cc" argument must be a list or tuple'
 			self.cc = list(cc)
 		else:
 			self.cc = []
@@ -113,7 +114,7 @@ class EmailMessage(object):
 	def recipients(self):
 		return self.to + self.cc
 
-	@gen.engine
+	# @gen.engine
 	def send(self):
 		yield gen.Task(self.connection.send_message, [self])
 

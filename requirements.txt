@@ -1,6 +1,6 @@
-tornado
-jinja2
-redis
-peewee
-markdown
-pygments
+tornado==6.1
+jinja2==2.11.2
+redis==3.5.3
+peewee==3.14.0
+markdown==3.3.3
+pygments==2.7.2

@@ -11,12 +11,13 @@ DOMAIN = 'http://0.0.0.0:9000'
 
 THEME_NAME = 'fluid-blue'
 
-DB_ENGINE = 'peewee.SqliteDatabase'  # peewee.SqliteDatabase,peewee.MySQLDatabase
-DB_HOST = '0.0.0.0'
+DB_ENGINE = 'peewee.MySQLDatabase'  # peewee.SqliteDatabase,peewee.MySQLDatabase
+DB_HOST = '127.0.0.1:3306'
 DB_USER = 'root'
-DB_PASSWD = 'root'
+DB_PASSWD = '123456'
 # db file if DB_ENGINE is SqliteDatabase
-DB_NAME = os.path.join(os.path.dirname(__file__), 'blog.db')
+# DB_NAME = os.path.join(os.path.dirname(__file__), 'blog')
+DB_NAME = 'blog'
 
 ADMIN_EMAIL = '594611460@qq.com'
 SMTP_SERVER = 'smtp.qq.com'

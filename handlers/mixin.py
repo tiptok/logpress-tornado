@@ -7,7 +7,7 @@ except:
     pass
 from pygments import highlight
 from pygments.lexers import get_lexer_for_filename
-from pygments.formatters import HtmlFormatter
+from pygments.formatters.html import HtmlFormatter
 import traceback
 import sys
 import os
@@ -54,12 +54,14 @@ class ExceptionMixin(object):
                         linenos=True, linenostart=target_line - half_lines, hl_lines=[half_lines + 1])
                     lexer = get_lexer_for_filename(fp)
                     return highlight(code, lexer, formatter)
-            except Exception, ex:
+            # except Exception, ex:
+            #     return ''
+            except:
                 return ''
-
         if self.application.settings.get('debug', False) is False:
             full_message = kwargs.get('exception', None)
-            if not full_message or unicode(full_message) == '':
+            # if not full_message or unicode(full_message) == '':
+            if not full_message or full_message.encode('utf-8') == '':
                 full_message = 'Sky is falling!'
             return "<html><title>%(code)d: %(message)s</title><body><h1>%(code)d: %(message)s</h1>%(full_message)s</body></html>" % {
                 "code": status_code,

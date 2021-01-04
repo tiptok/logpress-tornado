@@ -13,6 +13,8 @@ from core import db
 from lib.helpers import create_token, cached_property
 from core import smtp_server, settings
 from config import DOMAIN as domain
+from playhouse.signals import post_save
+from lib.mail.message import TemplateEmailMessage
 
 
 class User(db.Model):
@@ -145,9 +147,6 @@ class Link(db.Model):
     class Meta:
         db_table = 'links'
 
-
-from playhouse.signals import post_save
-from lib.mail.message import TemplateEmailMessage
 
 
 @post_save(sender=Comment)

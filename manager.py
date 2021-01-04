@@ -45,25 +45,25 @@ def runserver():
     http_server = HTTPServer(Application(), xheaders=True)
     http_server.listen(options.port)
     loop = tornado.ioloop.IOLoop.instance()
-    print 'Server running on http://0.0.0.0:%d' % (options.port)
+    print('Server running on http://0.0.0.0:%d' % (options.port))
     loop.start()
 
 
 def createuser():
-    username = raw_input('input username: ')
+    username = input('input username: ')
     if username:
         from models import User
         q = User.select().where(User.username == username.strip())
         if q.count() > 0:
-            print 'username [ %s ] exists! please choice another one and try it again!' % (username)
+            print('username [ %s ] exists! please choice another one and try it again!' % (username))
             sys.exit(0)
-        email = raw_input('input your Email: ')
-        password = raw_input('input password: ')
+        email = input('input your Email: ')
+        password = input('input password: ')
         User.create(username=username, email=email.strip(),
                     password=User.create_password(password))
-        print '%s created!' % (username)
+        print('%s created!' % (username))
     else:
-        print 'username is null,exit!'
+        print('username is null,exit!')
         sys.exit(0)
 
 
@@ -75,7 +75,7 @@ def syncdb():
         if model.table_exists():
             model.drop_table()
         model.create_table()
-        print 'created table:', model._meta.db_table
+        print('created table:', model._meta.db_table)
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()

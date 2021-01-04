@@ -6,9 +6,9 @@ try:
 except:
     pass
 from datetime import datetime
-from lib.markdown import Markdown
+# from lib.markdown import Markdown
 
-markdowner = Markdown()
+# markdowner = Markdown()
 
 
 def datetimeformat(value, format='%Y-%m-%d %H:%M'):
@@ -16,7 +16,7 @@ def datetimeformat(value, format='%Y-%m-%d %H:%M'):
 
 
 def truncate_words(s, num=50, end_text='...'):
-    s = unicode(s, 'utf8')
+    s = s.encode('utf8')
     length = int(num)
     if len(s) > length:
         s = s[:length]
@@ -26,8 +26,8 @@ def truncate_words(s, num=50, end_text='...'):
 
 
 def mdconvert(value):
-    return markdowner.convert(value)
-
+    # //return markdowner.convert(value)
+    return
 
 def null(value):
     return value if value else ""

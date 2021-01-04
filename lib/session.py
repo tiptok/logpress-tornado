@@ -6,7 +6,8 @@ try:
     psyco.full()
 except:
     pass
-import cPickle as pickle
+# import cPickle as pickle
+import _pickle as pickle
 from uuid import uuid4
 import time
 import logging
