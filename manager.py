@@ -75,7 +75,7 @@ def syncdb():
         if model.table_exists():
             model.drop_table()
         model.create_table()
-        print('created table:', model._meta.db_table)
+        # print('created table:', model.table_name)
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()

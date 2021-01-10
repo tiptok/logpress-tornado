@@ -7,7 +7,7 @@ DEBUG = True
 SITE_NAME = u'Logpress'
 SITE_KEYWORDS = """"""
 SITE_DESC = """blog powered by tornado,jinja2,peewee"""
-DOMAIN = 'http://0.0.0.0:9000'
+DOMAIN = 'http://127.0.0.1:9000'
 
 THEME_NAME = 'fluid-blue'
 

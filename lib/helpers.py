@@ -12,7 +12,7 @@ import sys
 
 
 def create_token(length=16):
-    chars = list(string.letters + string.digits)
+    chars = list(string.ascii_letters + string.digits)
     salt = ''.join([choice(chars) for i in range(length)])
     return salt
 

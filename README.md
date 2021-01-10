@@ -49,3 +49,10 @@ logpress-tornado
 [jinja2]:http://jinja.pocoo.org/
 [peewee]:http://peewee.readthedocs.org/en/latest/index.html
 [demo]:http://blog.szgeist.com
+
+5. **登录**
+
+    ```
+    登录地址
+    127.0.0.1:9000/account/login
+    ```

@@ -26,7 +26,7 @@ class User(db.Model):
     def create_password(raw):
         salt = create_token(8)
         passwd = '%s%s%s' % (salt, raw, 'blog_engine')
-        hsh = hashlib.sha1(passwd).hexdigest()
+        hsh = hashlib.sha1(passwd.encode('utf-8')).hexdigest()
         return "%s$%s" % (salt, hsh)
 
     def check_password(self, raw):
@@ -34,11 +34,11 @@ class User(db.Model):
             return False
         salt, hsh = self.password.split('$')
         passwd = '%s%s%s' % (salt, raw, 'blog_engine')
-        verify = hashlib.sha1(passwd).hexdigest()
+        verify = hashlib.sha1(passwd.encode('utf-8')).hexdigest()
         return verify == hsh
 
     class Meta:
-        db_table = 'users'
+        table_name = 'users'
 
 
 class Category(db.Model):
@@ -50,7 +50,7 @@ class Category(db.Model):
         return '/category/%s' % (urllib.quote(self.name.encode('utf8')))
 
     class Meta:
-        db_table = 'category'
+        table_name = 'category'
 
 
 class Post(db.Model):
@@ -99,7 +99,7 @@ class Post(db.Model):
             return None
 
     class Meta:
-        db_table = "posts"
+        table_name = "posts"
         order_by = ('-created',)
 
 
@@ -137,7 +137,7 @@ class Comment(db.Model):
              size)
 
     class Meta:
-        db_table = 'comments'
+        table_name = 'comments'
 
 
 class Link(db.Model):
@@ -145,7 +145,7 @@ class Link(db.Model):
     url = peewee.CharField()
 
     class Meta:
-        db_table = 'links'
+        table_name = 'links'
 
 
 

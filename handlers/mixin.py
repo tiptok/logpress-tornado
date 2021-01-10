@@ -11,7 +11,7 @@ from pygments.formatters.html import HtmlFormatter
 import traceback
 import sys
 import os
-import httplib
+import http.client
 import tornado
 
 
@@ -65,7 +65,7 @@ class ExceptionMixin(object):
                 full_message = 'Sky is falling!'
             return "<html><title>%(code)d: %(message)s</title><body><h1>%(code)d: %(message)s</h1>%(full_message)s</body></html>" % {
                 "code": status_code,
-                "message": httplib.responses[status_code],
+                "message": http.client.responses[status_code],
                 "full_message": full_message,
             }
         else:

@@ -27,7 +27,8 @@ class RedisSessionStore(object):
         return '%s:%s' % (self.options['key_prefix'], sid)
 
     def generate_sid(self):
-        return uuid4().get_hex()
+        return "123465"
+        # return uuid4().get_hex()
 
     def get_session(self, sid, name):
         data = self.redis.hget(self.prefixed(sid), name)
