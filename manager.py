@@ -77,7 +77,7 @@ def syncdb():
         model.create_table()
         # print('created table:', model.table_name)
 
-if __name__ == '__main__':
+if  __name__ == '__main__':   
     tornado.options.parse_command_line()
     if options.cmd == 'runserver':
         runserver()

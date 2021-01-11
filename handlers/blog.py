@@ -5,7 +5,7 @@ try:
     psyco.full()
 except:
     pass
-from jinja2 import FileSystemLoader
+from     import FileSystemLoader
 from handlers import BaseHandler
 from models import Post, Category, Tag, Link, Comment
 import os
