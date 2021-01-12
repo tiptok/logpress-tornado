@@ -38,7 +38,7 @@ class Database(object):
             raise Exception(
                 'Database engine not a subclass of peewee.Database: "%s"' % self.engine)
         # self.database = self.database_class(self.db, **self.config)
-        self.database = peewee.MySQLDatabase('blog',user='root',password='123456',host='127.0.0.1',port=3306)
+        self.database = peewee.MySQLDatabase('blog',user='root',password='123456',host='127.0.0.1',port=3306) 
     def get_model_class(self):
         class BaseModel(_model):
 

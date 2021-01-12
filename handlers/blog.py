@@ -5,7 +5,7 @@ try:
     psyco.full()
 except:
     pass
-from     import FileSystemLoader
+from jinja2  import FileSystemLoader
 from handlers import BaseHandler
 from models import Post, Category, Tag, Link, Comment
 import os
@@ -45,10 +45,10 @@ class BlogHandler(BaseHandler):
         return Link.select()
 
     def get_archives(self):
-        if isinstance(db.database, peewee.SqliteDatabase):
-            return RawQuery(Post, "select strftime('%Y',created) year,strftime('%m',created) month,count(id) count from posts group by month")
-        elif isinstance(db.database, peewee.MySQLDatabase):
-            return RawQuery(Post, "select date_format(created,'%Y') year,date_format(created,'%m') month,count(id) count from posts group by month")
+        # if isinstance(db.database, peewee.SqliteDatabase):
+        #     return RawQuery("select strftime('%Y',created) year,strftime('%m',created) month,count(id) count from posts group by month")
+        # elif isinstance(db.database, peewee.MySQLDatabase):
+        #     return RawQuery("select date_format(created,'%Y') year,date_format(created,'%m') month,count(id) count from posts group by month",None,_database=db.database)
         return None
 
     def get_calendar_widget(self):
